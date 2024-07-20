@@ -1,0 +1,256 @@
+/* Rutherford Labbe - 05-02-2024 */
+
+/*------------------------------------------------ Section Divider ------------------------------------------------------*/
+
+body{
+    overflow: hidden;
+    background-color: #fdeedc;
+}
+
+body:hover{
+    /* Change the cursor to a pointer */
+    cursor: pointer;
+}
+
+#content_box{
+    display: block;
+}
+
+/*------------------------------------------------ Section Divider ------------------------------------------------------*/
+
+
+/*------------------------------------------------ Section Divider ------------------------------------------------------*/
+
+    .parent-container {
+        position: relative;
+        width: 69em;
+        height: 31.5em;
+        margin: 0 auto;
+        margin-top: 2em;
+        background-color: lightblue;
+    }
+
+    .background-element {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; /* Background element is in front */
+    }
+
+    .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; /* Balls container is behind the background element */
+    }
+
+    /* New styling for balls */
+    .ball {
+        position: absolute;
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        transition: transform 0.5s ease-in-out; /* Smooth transition for movement */
+    }
+
+    /* New styling for balls */
+    .bottom-left {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 50%;
+        transition: transform 0.5s ease-in-out; /* Smooth transition for movement */
+    }
+
+    .bottom-right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-radius: 50%;
+        transition: transform 0.5s ease-in-out; /* Smooth transition for movement */
+    }
+
+    /*.green {
+        background-color: green;
+    }
+
+    .orange {
+        background-color: orange;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+
+    .black{
+        background-color: black;
+    }*/
+
+    .blue{
+        width: 100px;
+        height: 100px;
+    }
+
+    .black{
+        width: 90px;
+        height: 90px;
+    }
+
+/*------------------------------------------------ Section Divider ------------------------------------------------------*/
+
+#logo,
+#time{
+    /* Sets layer */
+    z-index: 0;
+}
+
+#logo{
+    /* Centers element vertically and horizontally */
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+
+    /* Set the dimensions of the video */
+    width: 5em;
+    height: 5em;
+}
+
+.logo{
+    /* Fill in the dimension of the parent element */
+    width: 100%;
+    height: 100%;
+    
+    /* Image proportion remains the same */
+    object-fit: cover;
+}
+
+#time{
+    /* Centers element vertically and horizontally */
+    position: absolute;
+    top: 20%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+
+    /* Set the dimensions of the video */
+    width: 5em;
+    height: 5em;
+
+    font-size: 2em;
+}
+
+/*------------------------------------------------ Section Divider ------------------------------------------------------*/
+
+#background{
+    /* Centers element vertically and horizontally */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Set the dimensions of the video */
+    width: 100%;
+    height: 100%;
+
+    /* Sets layer */
+    z-index: 0;
+
+}
+
+.background{
+    /* Fill in the dimension of the parent element */
+    width: 100%;
+    height: 100%;
+
+    /* Image proportion remains the same */
+    object-fit: cover;
+}
+
+#cannons{
+    /* Centers element vertically and horizontally */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Set the dimensions of the video */
+    width: 100vw;
+    height: 100vh;
+
+    /* Sets layer */
+    z-index: 0;
+}
+
+.cannons{
+    /* Fill in the dimension of the parent element */
+    width: 100%;
+    height: 100%;
+
+    /* Image proportion remains the same */
+    object-fit: cover;
+}
+
+/*------------------------------------------------ Section Divider ------------------------------------------------------*/
+
+footer{
+    /* Centers element vertically and horizontally */
+    position: absolute;
+    top: 84%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#boul_one,
+#boul_two,
+#boul_three,
+#boul_four{
+    /* Center text */
+    text-align: center;
+
+    /* Add a bottom margin */
+    margin-bottom: 5px;
+}
+
+#boul_item{
+    /* Centers element vertically and horizontally */
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Set up grid - 1 row 5 columns */
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 1.8em;
+}
+
+#boul_green, 
+#boul_orange,
+#boul_red,
+#star{
+    /* Set the dimensions of the video */
+    width: 5em;
+    height: 5em;
+}
+
+.boul_green,
+.boul_orange,
+.boul_red,
+.star{
+    /* Fill in the dimension of the parent element */
+    width: 100%;
+    height: 100%;
+    
+    /* Image proportion remains the same */
+    object-fit: cover;
+}
+
+/*------------------------------------------------ Section Divider ------------------------------------------------------*/

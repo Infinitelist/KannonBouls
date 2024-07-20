@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Game</title>
+  <style>
+    .container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    }
+
+    .ball {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: blue; /* Default color */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for movement */
+    }
+
+    .green {
+    background-color: green;
+    }
+
+    .orange {
+    background-color: orange;
+    }
+
+    .red {
+    background-color: red;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Balls will be dynamically added here -->
+  </div>
+  <script>
+    function createBall(color) {
+  const ball = document.createElement('div');
+  ball.classList.add('ball', color);
+  document.querySelector('.container').appendChild(ball);
+  
+  // Start position at the center
+  const containerWidth = document.querySelector('.container').clientWidth;
+  const containerHeight = document.querySelector('.container').clientHeight;
+  const ballWidth = ball.clientWidth;
+  const ballHeight = ball.clientHeight;
+  const startX = (containerWidth - ballWidth) / 2;
+  const startY = (containerHeight - ballHeight) / 2;
+  
+  ball.style.transform = `translate(${startX}px, ${startY}px)`;
+
+  // Random spread out
+  setTimeout(() => {
+    moveBall(ball);
+  }, 1000); // Delay to allow other balls to initialize first
+}
+
+function moveBall(ball) {
+  const container = document.querySelector('.container');
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+  
+  const ballWidth = ball.clientWidth;
+  const ballHeight = ball.clientHeight;
+
+  const maxX = containerWidth - ballWidth;
+  const maxY = containerHeight - ballHeight;
+
+  const randomX = Math.floor(Math.random() * (maxX + 1));
+  const randomY = Math.floor(Math.random() * (maxY + 1));
+
+  ball.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+  setTimeout(() => {
+    moveBall(ball);
+  }, 2000); // Adjust the delay for how long the ball stays before moving out
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setInterval(() => {
+    const colors = ['green', 'orange', 'red'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    createBall(randomColor);
+  }, 3000); // Adjust the interval for how often new balls are created
+});
+
+// Change color when hitting the edge
+document.querySelector('.container').addEventListener('transitionend', (event) => {
+  const ball = event.target;
+  const container = document.querySelector('.container');
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+  
+  const ballWidth = ball.clientWidth;
+  const ballHeight = ball.clientHeight;
+
+  const maxX = containerWidth - ballWidth;
+  const maxY = containerHeight - ballHeight;
+
+  const currentX = parseFloat(ball.style.transform.split('(')[1].split(',')[0]);
+  const currentY = parseFloat(ball.style.transform.split(',')[1].split(')')[0]);
+
+  if (currentX === 0 || currentX === maxX || currentY === 0 || currentY === maxY) {
+    switch (ball.classList[1]) {
+      case 'green':
+        ball.classList.remove('green');
+        ball.classList.add('orange');
+        break;
+      case 'orange':
+        ball.classList.remove('orange');
+        ball.classList.add('red');
+        break;
+      case 'red':
+        ball.classList.remove('red');
+        ball.classList.add('green');
+        break;
+      default:
+        break;
+    }
+  }
+});
+
+  </script>
+</body>
+</html>
+

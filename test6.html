@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Balls</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .box {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #000;
+            z-index: 2;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+        }
+
+        .ball {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            z-index: 1;
+            left: calc(50% - 15px);
+            top: calc(50% - 15px);
+            cursor: pointer;
+            transition: transform 2s;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box"></div>
+        <div class="ball" style="background-color: red;"></div>
+        <div class="ball" style="background-color: blue;"></div>
+        <div class="ball" style="background-color: green;"></div>
+        <div class="ball" style="background-color: yellow;"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const balls = document.querySelectorAll('.ball');
+            const containerWidth = window.innerWidth;
+            const containerHeight = window.innerHeight;
+
+            balls.forEach(ball => {
+                ball.addEventListener('click', () => {
+                    ball.style.display = 'none';
+                });
+
+                // Random direction and distance
+                const directionX = Math.random() > 0.5 ? 1 : -1;
+                const directionY = Math.random() > 0.5 ? 1 : -1;
+                const distanceX = Math.random() * (containerWidth / 2);
+                const distanceY = Math.random() * (containerHeight / 2);
+
+                ball.style.transform = `translate(${directionX * distanceX}px, ${directionY * distanceY}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
